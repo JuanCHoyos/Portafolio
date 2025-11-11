@@ -1,0 +1,70 @@
+<header
+  class="min-h-16 w-full backdrop-blur-md flex items-center justify-center gap-8 px-4 fixed top-0 left-0 z-10"
+>
+  <ul class="flex items-center gap-4">
+    @for(item of menuItems(); track item.url) {
+    <li
+      class="text-xs md:text-sm font-semibold"
+      [class.text-primary-500]="fragment() === item.url"
+    >
+      <a [href]="'#'+item.url">{{ item.name }}</a>
+    </li>
+    }
+  </ul>
+  <div class="flex items-center">
+    <p-button
+      [icon]="themeManager.themeState().modeIcon"
+      size="small"
+      variant="text"
+      severity="contrast"
+      ariaLabel="change page theme"
+      (onClick)="darkModeMenu.toggle($event)"
+    >
+    </p-button>
+    <p-button
+      icon="pi pi-palette"
+      size="small"
+      variant="text"
+      severity="contrast"
+      ariaLabel="change dark mode"
+      (onClick)="themeMenu.toggle($event)"
+    >
+    </p-button>
+  </div>
+</header>
+<p-popover #darkModeMenu>
+  <ul>
+    @for(themeMode of themeManager.modes(); track themeMode.value) {
+    <li>
+      <button
+        class="w-full text-xs text-left font-semibold flex items-center gap-2 p-2 px-8 hover:bg-highlight cursor-pointer"
+        [class.bg-highlight]="themeManager.themeState().mode === themeMode.value"
+        (click)="themeManager.setMode(themeMode.value); darkModeMenu.hide()"
+      >
+        <span class="pi text-xs!" [class]="themeMode.icon"></span> {{
+        themeMode.label }}
+      </button>
+    </li>
+    }
+  </ul>
+</p-popover>
+
+<p-popover #themeMenu>
+  <div class="flex flex-col gap-2 p-2">
+    <h4 class="text-sm md:text-base text-primary-500 font-bold mb-2">
+      Change primary color
+    </h4>
+    <ul class="grid grid-cols-6 gap-x-2 gap-y-4">
+      @for(color of themeManager.primaryColors(); track $index) {
+      <li>
+        <button
+          class="size-5 text-xs text-left font-semibold flex items-center gap-2 hover:scale-110 cursor-pointer rounded-full"
+          [ngClass]="{'ring-2 border-2 border-surface ring-primary-500': themeManager.themeState().primary === color.color}"
+          [class]="color.class"
+          (click)="themeManager.setPrimaryColor(color.color);"
+        ></button>
+      </li>
+      }
+    </ul>
+  </div>
+</p-popover>

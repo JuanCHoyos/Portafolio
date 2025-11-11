@@ -1,1 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss-primeui";
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+
+:root {
+  --p-popover-content-padding: 8px 4px;
+}
+
+body {
+  font-family: Onest Variable, system-ui, sans-serif;
+}
+
+::view-transition-old(root) {
+  animation-duration: 1s;
+  animation-name: shrink-circle;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.dark::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.dark::view-transition-new(root) {
+  animation-duration: 1s;
+  animation-name: expand-circle;
+  mix-blend-mode: normal;
+}
+
+/* Animación de expansión circular desde el centro */
+@keyframes expand-circle {
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  to {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+/* Animación de contracción circular hacia el centro */
+@keyframes shrink-circle {
+  from {
+    clip-path: circle(150% at 50% 50%);
+    z-index: 1000000;
+  }
+
+  to {
+    clip-path: circle(0% at 50% 50%);
+    z-index: 1000000;
+  }
+}
+
+circle {
+  transform-origin: center;
+  animation: float 3s linear infinite alternate;
+}
+
+.circle1 {
+  animation-delay: 0s;
+}
+
+.circle2 {
+  animation-delay: 1s;
+}
+
+.circle3 {
+  animation-delay: 2s;
+}
+
+.circle4 {
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+
+  100% {
+    transform: translateY(0) scale(1.5);
+  }
+}
+
+@theme {
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%
+    }
+
+    50% {
+      background-position: 100% 50%
+    }
+
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0
+    }
+
+    to {
+      width: 100%
+    }
+  }
+
+  @keyframes caret {
+    50% {
+      border-color: transparent
+    }
+  }
+
+  --animate-typing: typing 3s steps(30) forwards,
+  caret .8s step-end infinite;
+
+  --animate-gradient: gradient 8s ease-in-out infinite;
+}
+
+.text-animated-gradient {
+  background-size: 200% 200%;
+  animation: var(--animate-gradient);
+}

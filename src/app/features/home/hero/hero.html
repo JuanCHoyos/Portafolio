@@ -1,0 +1,36 @@
+<section class="min-h-svh flex flex-col items-center justify-center gap-24">
+  <div class="flex flex-col items-center justify-center gap-8">
+    <ui-title
+      [heading]="HeadingType.H1"
+      [showBorder]="false"
+      class="text-center"
+    >
+      Hola, soy <span class="text-primary-500">Juan</span>, desarrollador web
+      full-stack</ui-title
+    >
+    <p class="text-sm md:text-base text-center max-w-xl">
+      Creo experiencias digitales únicas y eficientes. Me especializo en
+      desarrollar aplicaciones modernas, escalables y con interfaces limpias que
+      combinan diseño y funcionalidad.
+    </p>
+    <div class="flex flex-col md:flex-row items-center gap-4">
+      <p-button class="min-w-64">
+        <span class="pi pi-envelope"></span>
+        <span class="text-sm md:text-base font-medium">Contáctame</span>
+      </p-button>
+      <a
+        href="https://drive.google.com/uc?export=download&id=1BYCFJx4KAfL3alhSsyTDMv7w7tEanfaX"
+        download
+        pButton
+        icon="pi pi-download"
+        [outlined]="true"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="min-w-64"
+      >
+        <span pButtonLabel class="text-sm md:text-base">Descargar CV</span>
+      </a>
+    </div>
+  </div>
+  <social-networks></social-networks>
+</section>

@@ -1,0 +1,102 @@
+<p-card>
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8" id="contact">
+    <div class="flex flex-col gap-8">
+      <header class="flex flex-col gap-4">
+        <h2 class="text-xl md:text-2xl font-bold text-primary-500">
+          Let's talk
+        </h2>
+        <p class="text-sm md:text-base">
+          To request a quote or want to meet up for coffee, contact us directly
+          or fill out the form and we will get back to you promptly.
+        </p>
+      </header>
+      <form
+        class="flex flex-col gap-4"
+        [formGroup]="form()"
+        (submit)="submit()"
+      >
+        <div class="flex flex-col gap-2">
+          <label for="name" class="text-sm font-semibold">Your name</label>
+          <input
+            pInputText
+            id="name"
+            type="text"
+            variant="filled"
+            [fluid]="true"
+            formControlName="name"
+          />
+          @if(form().get('name')?.touched && form().get('name')?.invalid){
+          <ng-container
+            *ngTemplateOutlet="error; context: { $implicit: 'Por favor asegúrate de ingresar un nombre con mínimo 3 caracteres.' }"
+          />
+          }
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="email" class="text-sm font-semibold">Your email</label>
+          <input
+            pInputText
+            id="email"
+            type="email"
+            variant="filled"
+            [fluid]="true"
+            formControlName="email"
+          />
+          @if(form().get('email')?.touched && form().get('email')?.invalid){
+          <ng-container
+            *ngTemplateOutlet="error; context: { $implicit: 'Formato de correo inválido, asegúrate de ingresar un email válido.' }"
+          />
+          }
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="message" class="text-sm font-semibold">Your message</label>
+          <textarea
+            id="message"
+            rows="5"
+            cols="30"
+            pTextarea
+            [fluid]="true"
+            variant="filled"
+            [autoResize]="true"
+            formControlName="message"
+          ></textarea>
+          @if(form().get('message')?.touched && form().get('message')?.invalid){
+          <ng-container
+            *ngTemplateOutlet="error; context: { $implicit: 'Contenido requerido' }"
+          />
+          }
+        </div>
+        <p-button [disabled]="form().invalid" type="submit" [fluid]="true"
+          >Send Message</p-button
+        >
+      </form>
+    </div>
+    <div class="flex flex-col md:items-center md:justify-between gap-4">
+      <img
+        src="assets/contact.png"
+        alt="contact"
+        srcset=""
+        class="max-w-3/6 object-contain hidden md:block"
+      />
+      <div class="flex flex-col gap-2">
+        <p class="text-xs md:text-sm flex items-center gap-2">
+          <span class="pi pi-map-marker"></span> Colombia
+        </p>
+        <p class="text-xs md:text-sm flex items-center gap-2">
+          <span class="pi pi-phone"></span> +57 3022135761
+        </p>
+        <p class="text-xs md:text-sm flex items-center gap-2">
+          <span class="pi pi-envelope"></span
+          >juancarloshoyoscabarique&#64;gmail.com
+        </p>
+      </div>
+      <social-networks></social-networks>
+    </div>
+  </section>
+</p-card>
+
+<ng-template #error let-message>
+  <p-message severity="error" size="small" variant="simple">
+    <span class="text-xs"> {{ message }}</span>
+  </p-message>
+</ng-template>
