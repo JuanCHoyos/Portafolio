@@ -1,0 +1,18 @@
+$circles: 4;
+$delay: 0;
+
+
+
+circle {
+  transform-origin: center;
+  animation: float 3s linear infinite alternate;
+}
+
+@for $i from 1 through $circles {
+  .circle1-#{$i} {
+    animation-delay: #{$delay}s;
+    $delay: $delay + 1;
+  }
+}
+
+
