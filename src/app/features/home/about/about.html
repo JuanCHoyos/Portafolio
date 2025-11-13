@@ -1,27 +1,33 @@
-<section class="grid grid-rows-[auto_auto] gap-8" id="about">
-  <ui-title [heading]="HeadingType.H2">
+<section class="flex flex-col gap-8" id="about">
+  <ui-heading [heading]="HeadingType.H2">
     <ng-template #icon>
-      <ui-icon
-        name="lucideBriefcase"
-        class="text-2xl md:text-3xl text-primary-500"
-      ></ui-icon> </ng-template
-    >Experiencia laboral</ui-title
-  >
-
-  <p-timeline [value]="timeline()" align="left">
-    <ng-template #content let-data let-last="index">
-      <div class="grid grid-cols-1 md:grid-cols-[0.5fr_1fr] gap-4 pb-4">
-        <div class="flex flex-col">
-          <h3 class="text-lg md:text-xl font-bold text-primary-500">
-            {{ data.title }}
-          </h3>
-          <span class="text-sm font-bold">{{ data.company }}</span>
-          <small class="text-xs dark:text-red-400">
-            {{ data.time }} | {{ data.city }}
-          </small>
-        </div>
-        <p class="text-sm">{{ data.description }}</p>
-      </div>
+      <ui-icon name="lucideUser2" class="text-2xl md:text-3xl"></ui-icon>
     </ng-template>
-  </p-timeline>
+    Sobre mi
+  </ui-heading>
+
+  <article class="flex flex-col gap-4">
+    <p class="text-sm md:text-base">
+      Mi nombre es Juan Carlos y soy <strong>Full-Stack Developer</strong>, con
+      un enfoque fuerte en construir aplicaciones completas usando
+      <strong>Angular</strong> en el frontend y <strong>Node.js</strong> en el
+      backend. Me especializo en crear interfaces escalables, arquitecturas
+      modulares y APIs robustas con <strong>TypeScript</strong>.
+    </p>
+
+    <p class="text-sm md:text-base">
+      Tengo experiencia con <strong>NestJS</strong>, <strong>Express</strong>,
+      bases de datos <strong>SQL/NoSQL</strong>, autenticación, optimización de
+      performance y diseño de componentes UI desacoplados. Disfruto
+      especialmente el trabajo de frontend, cuidando interacción, rendimiento y
+      estructura, sin descuidar la solidez del backend.
+    </p>
+
+    <p class="text-sm md:text-base">
+      Me impulsa crear <strong>interfaces de alta calidad</strong>, aplicar
+      <strong>patrones avanzados</strong> y desarrollar
+      <strong>componentes y librerías reutilizables</strong> que eleven tanto la
+      experiencia de usuario como la velocidad de desarrollo en cada proyecto.
+    </p>
+  </article>
 </section>

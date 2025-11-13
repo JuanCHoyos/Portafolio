@@ -3,12 +3,19 @@
 @import "tailwindcss";
 @import "primeicons/primeicons.css";
 
-:root {
-  --p-popover-content-padding: 8px 4px;
+
+html {
+  scroll-behavior: smooth;
+
+}
+
+*[id] {
+  scroll-margin-top: theme(spacing.16);
 }
 
 body {
   font-family: Onest Variable, system-ui, sans-serif;
+  scroll-behavior: smooth;
 }
 
 ::view-transition-old(root) {
@@ -57,27 +64,6 @@ body {
   }
 }
 
-circle {
-  transform-origin: center;
-  animation: float 3s linear infinite alternate;
-}
-
-.circle1 {
-  animation-delay: 0s;
-}
-
-.circle2 {
-  animation-delay: 1s;
-}
-
-.circle3 {
-  animation-delay: 2s;
-}
-
-.circle4 {
-  animation-delay: 3s;
-}
-
 @keyframes float {
   0% {
     transform: translateY(0) scale(1);
@@ -90,46 +76,4 @@ circle {
   100% {
     transform: translateY(0) scale(1.5);
   }
-}
-
-@theme {
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%
-    }
-
-    50% {
-      background-position: 100% 50%
-    }
-
-    100% {
-      background-position: 0% 50%
-    }
-  }
-
-  @keyframes typing {
-    from {
-      width: 0
-    }
-
-    to {
-      width: 100%
-    }
-  }
-
-  @keyframes caret {
-    50% {
-      border-color: transparent
-    }
-  }
-
-  --animate-typing: typing 3s steps(30) forwards,
-  caret .8s step-end infinite;
-
-  --animate-gradient: gradient 8s ease-in-out infinite;
-}
-
-.text-animated-gradient {
-  background-size: 200% 200%;
-  animation: var(--animate-gradient);
 }

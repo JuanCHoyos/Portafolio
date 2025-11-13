@@ -1,5 +1,5 @@
-<section class="flex flex-col gap-8">
-  <ui-title [heading]="HeadingType.H2">
+<section class="flex flex-col gap-8" id="tech">
+  <ui-heading [heading]="HeadingType.H2">
     <ng-template #icon>
       <ui-icon
         name="simpleAngular"
@@ -7,19 +7,27 @@
       ></ui-icon>
     </ng-template>
     Tecnologías
-  </ui-title>
+  </ui-heading>
 
-  <div class="flex gap-4 flex-wrap">
-    @for(tech of techs(); track tech.color) {
-    <div
-      class="min-w-18 fade-up-right min-h-18 md:min-w-20 md:min-h-20 flex flex-col items-center justify-center gap-2 border border-primary-500/50 p-2 rounded-xl hover:bg-primary-500/5 group"
-      [class]="tech.color"
-    >
-      <ui-icon
-        [name]="tech.icon"
-        class="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300"
-      ></ui-icon>
-      <span class="text-xs font-bold">{{ tech.label }}</span>
+  <div class="grid grid-cols-1 gap-4 md:gap-8">
+    @for(stack of techStacks(); track stack.label) {
+    <div class="flex flex-col gap-4">
+      <ui-heading [heading]="HeadingType.H4"> {{ stack.label }} </ui-heading>
+
+      <div class="flex flex-wrap gap-4">
+        @for(tech of stack.items; track tech.color) {
+        <div
+          class="min-w-18  min-h-18 md:min-w-20 md:min-h-20 flex-1 flex flex-col items-center justify-center gap-2 border border-primary-500/50 p-2 rounded-xl hover:bg-primary-500/5 group fade-up-right"
+          [class]="tech.color"
+        >
+          <ui-icon
+            [name]="tech.icon"
+            class="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300"
+          ></ui-icon>
+          <span class="text-xs font-bold">{{ tech.label }}</span>
+        </div>
+        }
+      </div>
     </div>
     }
   </div>

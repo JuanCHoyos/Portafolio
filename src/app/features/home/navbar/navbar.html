@@ -1,16 +1,28 @@
 <header
-  class="min-h-16 w-full backdrop-blur-md flex items-center justify-center gap-8 px-4 fixed top-0 left-0 z-10"
+  class="min-h-16 w-full backdrop-blur-lg flex items-center justify-center gap-8 px-4 fixed top-0 left-0 z-10"
 >
-  <ul class="flex items-center gap-4">
-    @for(item of menuItems(); track item.url) {
-    <li
-      class="text-xs md:text-sm font-semibold"
-      [class.text-primary-500]="fragment() === item.url"
-    >
-      <a [href]="'#'+item.url">{{ item.name }}</a>
-    </li>
+  <div class="relative">
+    <ul class="flex items-center">
+      @for(section of sections(); track section.url) {
+      <li #navUrl class="relative z-10">
+        <a
+          [href]="'#'+section.url"
+          class="block p-2 text-xs md:text-sm cursor-pointer hover:text-primary-500"
+          [ngClass]="{'text-primary-500 font-bold': currentSection() === section.url}"
+          (click)="setCurrentSection(section.url);"
+          >{{ section.name }}</a
+        >
+      </li>
+      }
+    </ul>
+    @if(currentSection()) {
+    <div
+      class="h-full top-0 bg-primary-500/20 text-primary-500 border border-primary-500 font-bold rounded-xl absolute z-0 transition-all duration-300"
+      [style.width.px]="currentSectionTemplate()?.width "
+      [style.transform]="'translateX(' + currentSectionTemplate()?.x + 'px)'"
+    ></div>
     }
-  </ul>
+  </div>
   <div class="flex items-center">
     <p-button
       [icon]="themeManager.themeState().modeIcon"

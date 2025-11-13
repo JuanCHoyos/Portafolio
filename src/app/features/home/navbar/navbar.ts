@@ -1,9 +1,20 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  signal,
+  viewChildren,
+} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { PopoverModule } from 'primeng/popover';
 
-import { filter, Subscription } from 'rxjs';
+import { filter, Subscription, take } from 'rxjs';
 import { ThemeManager } from '../../../core/services/theme-manager';
 import { ThemeMode, ThemeModeIcon } from '../../../core/models/theme';
 import { CommonModule } from '@angular/common';
@@ -18,46 +29,107 @@ import { CommonModule } from '@angular/common';
     }
   `,
 })
-export class Navbar implements OnInit, OnDestroy {
-  private readonly router = inject(Router);
+export class Navbar implements OnInit, AfterViewInit {
   public readonly themeManager = inject(ThemeManager);
-  fragment = signal('');
-  routerSubscribe = signal<Subscription | undefined>(undefined);
-  menuItems = signal<{ name: string; url: string }[]>([]);
+  private readonly router = inject(Router);
+  sections = signal<{ name: string; url: string }[]>([]);
+  currentSection = signal<string | undefined>(undefined);
+  sectionsTemplate = viewChildren<ElementRef<HTMLLIElement>>('navUrl');
+  currentSectionTemplate = computed(() =>
+    this.calculateActiveSectionPosition()
+  );
+  lockObserver = signal<boolean>(false);
+  debounce: number | undefined = undefined;
+
   constructor() {
-    this.routerSubscribe.set(
-      this.router.events
-        .pipe(filter((x) => x instanceof NavigationEnd))
-        .subscribe(() => {
-          this.fragment.set(
-            this.router.parseUrl(this.router.url).fragment ?? ''
-          );
-        })
-    );
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        take(1)
+      )
+      .subscribe(() => {
+        const currentSection = this.router.url.split('/#')[1];
+        this.currentSection.set(currentSection ?? undefined);
+        this.lockObserver();
+      });
   }
 
   ngOnInit(): void {
-    this.menuItems.set([
+    this.sections.set([
       {
-        name: 'About',
+        name: 'Sobre mi',
         url: 'about',
       },
       {
-        name: 'Tech',
+        name: 'Experiencia',
+        url: 'experience',
+      },
+      {
+        name: 'Tecnología',
         url: 'tech',
       },
       {
-        name: 'Projects',
+        name: 'Proyectos',
         url: 'projects',
       },
       {
-        name: 'Contact',
+        name: 'Contacto',
         url: 'contact',
       },
     ]);
   }
 
-  ngOnDestroy(): void {
-    this.routerSubscribe()?.unsubscribe();
+  ngAfterViewInit() {
+    this.startSectionObserver();
+  }
+
+  private startSectionObserver() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+
+        if (visible && !this.lockObserver()) {
+          this.currentSection.set(visible.target.id);
+        }
+      },
+      { threshold: 0.75 }
+    );
+
+    for (const { url } of this.sections()) {
+      const el = document.getElementById(url);
+      if (el) observer.observe(el);
+    }
+
+    return observer;
+  }
+
+  calculateActiveSectionPosition() {
+    const items = this.sectionsTemplate();
+    const index = this.sections().findIndex(
+      (s) => s.url === this.currentSection()
+    );
+    // console.log('aqui entro', this.currentSection(), items, index);
+
+    if (index < 0 || !items.length) return null;
+
+    const width = items[index].nativeElement.offsetWidth + 4;
+    const x = items
+      .slice(0, index)
+      .reduce((acc, el) => acc + el.nativeElement.offsetWidth, 0);
+
+    return { width, x };
+  }
+
+  setCurrentSection(url: string) {
+    this.lockerObserver();
+    this.currentSection.set(url);
+  }
+
+  lockerObserver() {
+    this.lockObserver.set(true);
+    clearTimeout(this.debounce);
+    this.debounce = setTimeout(() => {
+      this.lockObserver.set(false);
+    }, 100);
   }
 }
