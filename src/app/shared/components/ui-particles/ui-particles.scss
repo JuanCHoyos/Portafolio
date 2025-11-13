@@ -1,0 +1,64 @@
+$particles: 128;
+$min-size: 1;
+$max-size: 6;
+$min-duration: 20s;
+$max-duration: 35s;
+
+.circle-container {
+  position: absolute;
+  transform: translateY(-100vh);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  .circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    background-image: radial-gradient(var(--p-primary-500), var(--p-primary-500) 10%, rgba(153, 255, 255, 0) 56%);
+    animation: fade-frames 200ms infinite, scale-frames 2s infinite;
+  }
+}
+
+// 🔹 Animaciones base
+@keyframes fade-frames {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scale-frames {
+  0%, 100% { transform: scale3d(0.4, 0.4, 1); }
+  50% { transform: scale3d(2.2, 2.2, 1); }
+}
+
+// 🔹 Genera partículas dinámicamente
+@for $i from 1 through $particles {
+  $size: random($max-size - $min-size) + $min-size;
+  $duration: (random(15) + 20) * 1s;
+  $delay: random(40000) * 1ms;
+  $start-x: random(100);
+  $end-x: random(100);
+  $start-y: 105;
+  $end-y: -120;
+
+  .circle-container:nth-child(#{$i}) {
+    width: #{$size}px;
+    height: #{$size}px;
+    animation-name: move-frames-#{$i};
+    animation-duration: $duration;
+    animation-delay: $delay;
+
+    .circle {
+      animation-delay: random(3000) * 1ms;
+    }
+  }
+
+  @keyframes move-frames-#{$i} {
+    from {
+      transform: translate3d(#{$start-x}vw, #{$start-y}vh, 0);
+    }
+    to {
+      transform: translate3d(#{$end-x}vw, #{$end-y}vh, 0);
+    }
+  }
+}

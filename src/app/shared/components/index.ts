@@ -1,3 +1,4 @@
 export * from './ui-separator/ui-separator';
-export * from './ui-title/ui-title';
+export * from './ui-heading/ui-heading';
 export * from './ui-icon/ui-icon';
+export * from './ui-particles/ui-particles';
