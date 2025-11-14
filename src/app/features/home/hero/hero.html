@@ -1,5 +1,5 @@
-<section class="min-h-svh flex flex-col items-center justify-center gap-24">
-  <div class="flex flex-col items-center justify-center gap-8">
+<section class="min-h-svh grid grid-cols-1 justify-center grid-rows-[1fr_auto] px-4">
+  <article class="flex flex-col items-center justify-center gap-8">
     <ui-heading
       [heading]="HeadingType.H1"
       [showBorder]="false"
@@ -29,6 +29,7 @@
         pButton
         icon="pi pi-download"
         [outlined]="true"
+        severity="contrast"
         target="_blank"
         rel="noopener noreferrer"
         class="min-w-64"
@@ -36,7 +37,16 @@
         <span pButtonLabel class="text-sm md:text-base">Descargar CV</span>
       </a>
     </div>
-  </div>
+  </article>
 
-  <social-networks></social-networks>
+  <div class="flex flex-col items-center gap-8">
+    <social-networks></social-networks>
+    <div class="flex flex-col items-center gap-2 text-sm md:text-lg">
+      Conoce mi experiencia
+      <ui-icon
+        name="lucideChevronDown"
+        class="text-lg md:text-2xl animate-bounce"
+      ></ui-icon>
+    </div>
+  </div>
 </section>

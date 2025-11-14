@@ -27,10 +27,11 @@ import {
   simpleDocker,
 } from '@ng-icons/simple-icons';
 
-import { lucideBriefcase, lucideCodeSquare, lucideUser2 } from '@ng-icons/lucide';
+import { lucideBriefcase, lucideChevronDown, lucideCodeSquare, lucideUser2 } from '@ng-icons/lucide';
 
 export const ICONS = {
   lucideBriefcase,
+  lucideChevronDown,
   lucideCodeSquare,
   lucideUser2,
   simpleAngular,

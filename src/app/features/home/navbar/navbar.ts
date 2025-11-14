@@ -4,9 +4,7 @@ import {
   computed,
   ElementRef,
   inject,
-  OnDestroy,
   OnInit,
-  QueryList,
   signal,
   viewChildren,
 } from '@angular/core';
@@ -14,9 +12,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { PopoverModule } from 'primeng/popover';
 
-import { filter, Subscription, take } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { ThemeManager } from '../../../core/services/theme-manager';
-import { ThemeMode, ThemeModeIcon } from '../../../core/models/theme';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -72,10 +69,6 @@ export class Navbar implements OnInit, AfterViewInit {
         name: 'Proyectos',
         url: 'projects',
       },
-      {
-        name: 'Contacto',
-        url: 'contact',
-      },
     ]);
   }
 
@@ -108,11 +101,10 @@ export class Navbar implements OnInit, AfterViewInit {
     const index = this.sections().findIndex(
       (s) => s.url === this.currentSection()
     );
-    // console.log('aqui entro', this.currentSection(), items, index);
 
     if (index < 0 || !items.length) return null;
 
-    const width = items[index].nativeElement.offsetWidth + 4;
+    const width = items[index].nativeElement.offsetWidth;
     const x = items
       .slice(0, index)
       .reduce((acc, el) => acc + el.nativeElement.offsetWidth, 0);

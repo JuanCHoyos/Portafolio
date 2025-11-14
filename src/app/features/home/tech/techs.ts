@@ -21,21 +21,21 @@ export class Techs {
     {
       label: 'Frontend',
       items: [
-        { color: 'text-orange-400', icon: 'simpleHtml5', label: 'HTML' },
-        { color: 'text-blue-500', icon: 'simpleCss', label: 'CSS' },
+        { color: 'text-orange-700', icon: 'simpleHtml5', label: 'HTML' },
+        { color: 'text-blue-700', icon: 'simpleCss', label: 'CSS' },
         {
-          color: 'text-yellow-500',
+          color: 'text-yellow-700',
           icon: 'simpleJavascript',
           label: 'JavaScript',
         },
         {
-          color: 'text-blue-500',
+          color: 'text-blue-700',
           icon: 'simpleTypescript',
           label: 'TypeScript',
         },
         { color: 'text-[#bd23f2]', icon: 'simpleAngular', label: 'Angular' },
-        { color: 'text-cyan-500', icon: 'simpleReact', label: 'React' },
-        { color: 'text-blue-400', icon: 'simpleIonic', label: 'Ionic' },
+        { color: 'text-cyan-700', icon: 'simpleReact', label: 'React' },
+        { color: 'text-blue-700', icon: 'simpleIonic', label: 'Ionic' },
         {
           color: 'text-[#523b77]',
           icon: 'simpleBootstrap',
@@ -52,11 +52,11 @@ export class Techs {
     {
       label: 'Backend',
       items: [
-        { color: 'text-green-500', icon: 'simpleNodedotjs', label: 'Node.js' },
-        { color: 'text-gray-600', icon: 'simpleExpress', label: 'Express' },
-        { color: 'text-green-500', icon: 'simpleMongodb', label: 'MongoDB' },
+        { color: 'text-green-700', icon: 'simpleNodedotjs', label: 'Node.js' },
+        { color: 'text-constract', icon: 'simpleExpress', label: 'Express' },
+        { color: 'text-green-700', icon: 'simpleMongodb', label: 'MongoDB' },
         {
-          color: 'text-blue-500',
+          color: 'text-blue-700',
           icon: 'simplePostgresql',
           label: 'PostgreSQL',
         },
@@ -68,14 +68,14 @@ export class Techs {
       label: 'Herramientas',
       items: [
         { color: 'text-[#f05033]', icon: 'simpleGit', label: 'Git' },
-        { color: 'text-black', icon: 'simpleGithub', label: 'GitHub' },
+        { color: 'text-constract', icon: 'simpleGithub', label: 'GitHub' },
         { color: 'text-blue-700', icon: 'simpleBitbucket', label: 'Bitbucket' },
-        { color: 'text-blue-400', icon: 'simpleJira', label: 'Jira' },
+        { color: 'text-blue-700', icon: 'simpleJira', label: 'Jira' },
         { color: 'text-[#fe6c35]', icon: 'simplePostman', label: 'Postman' },
-        { color: 'text-gray-500', icon: 'simpleJson', label: 'JSON' },
+        { color: 'text-gray-700', icon: 'simpleJson', label: 'JSON' },
         { color: 'text-[#99425b]', icon: 'simpleJest', label: 'Jest' },
         { color: 'text-[#2e65b1]', icon: 'simpleZod', label: 'Zod' },
-        { color: 'text-pink-500', icon: 'simpleGraphql', label: 'GraphQL' },
+        { color: 'text-pink-700', icon: 'simpleGraphql', label: 'GraphQL' },
       ],
     },
   ]);
