@@ -7,38 +7,31 @@
       <li #navUrl class="relative z-10">
         <a
           [href]="'#'+section.url"
-          class="block p-1 text-xs md:text-sm cursor-pointer hover:text-primary-500 whitespace-nowrap"
-          [ngClass]="{'text-primary-500 font-bold': currentSection() === section.url}"
+          class="block p-1 text-xs md:text-base cursor-pointer hover:text-primary whitespace-nowrap outline-0"
+          [ngClass]="{'text-primary': currentSection() === section.url}"
           (click)="setCurrentSection(section.url);"
           >{{ section.name }}</a
         >
       </li>
       }
     </ul>
-    @if(currentSection()) {
-    <div
-      class="h-full top-0 bg-primary-500/20 text-primary-500 border border-primary-500  rounded absolute z-0 transition-all duration-300"
-      [style.width.px]="currentSectionTemplate()?.width "
-      [style.transform]="'translateX(' + currentSectionTemplate()?.x + 'px)'"
-    ></div>
-    }
   </div>
   <div class="flex items-center">
     <p-button
       [icon]="themeManager.themeState().modeIcon"
-      size="small"
       variant="text"
       severity="contrast"
       ariaLabel="change page theme"
+      class="text-base"
       (onClick)="darkModeMenu.toggle($event)"
     >
     </p-button>
     <p-button
       icon="pi pi-palette"
-      size="small"
       variant="text"
       severity="contrast"
       ariaLabel="change dark mode"
+      class="text-base"
       (onClick)="themeMenu.toggle($event)"
     >
     </p-button>
@@ -63,7 +56,7 @@
 
 <p-popover #themeMenu>
   <div class="flex flex-col gap-2 p-2">
-    <h4 class="text-sm md:text-base text-primary-500 font-bold mb-2">
+    <h4 class="text-sm md:text-base text-primary font-bold mb-2">
       Change primary color
     </h4>
     <ul class="grid grid-cols-6 gap-x-2 gap-y-4">

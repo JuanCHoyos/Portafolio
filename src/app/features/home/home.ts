@@ -8,12 +8,14 @@ import { Navbar } from './navbar/navbar';
 import { Experience } from './experience/experience';
 import { UIParticles } from '../../shared/components';
 import { UIBackground } from '../../shared/components/ui-background/ui-background';
+import { Contact } from './contact/contact';
 
 @Component({
   selector: 'home',
   imports: [
     CommonModule,
     About,
+    Contact,
     Experience,
     Hero,
     Navbar,

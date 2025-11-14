@@ -3,7 +3,7 @@
     <ng-template #icon>
       <ui-icon
         name="lucideBriefcase"
-        class="text-2xl md:text-3xl text-primary-500"
+        class="text-primary"
       ></ui-icon> </ng-template
     >Experiencia laboral</ui-heading
   >
@@ -12,7 +12,7 @@
     <ng-template #content let-data let-last="index">
       <section class="grid grid-cols-1 md:grid-cols-[0.5fr_1fr] gap-4 pb-10">
         <div class="flex flex-col">
-          <h3 class="text-lg md:text-xl font-bold text-primary-500">
+          <h3 class="text-lg md:text-xl font-bold text-primary">
             {{ data.title }}
           </h3>
           <span class="text-sm font-bold">{{ data.company }}</span>
@@ -20,7 +20,7 @@
             {{ data.time }} | {{ data.city }}
           </small>
         </div>
-        <p class="text-sm">{{ data.description }}</p>
+        <p class="text-sm md:text-base">{{ data.description }}</p>
       </section>
     </ng-template>
   </p-timeline>

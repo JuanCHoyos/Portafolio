@@ -1,17 +1,14 @@
 <section class="flex flex-col gap-8" id="projects">
   <ui-heading [heading]="HeadingType.H2">
     <ng-template #icon>
-      <ui-icon
-        name="lucideCodeSquare"
-        class="text-2xl md:text-3xl text-primary-500"
-      ></ui-icon>
+      <ui-icon name="lucideCodeSquare" class="text-primary"></ui-icon>
     </ng-template>
     Proyectos</ui-heading
   >
 
   <p-card [style]="{ background: 'transparent', boxShadow: 'none' }">
     <div
-      class="grid grid-cols-1 md:grid-cols-[0.8fr_1fr] flex-col md:flex-row gap-4"
+      class="grid grid-cols-1 md:grid-cols-[0.7fr_1fr] flex-col md:flex-row gap-4"
     >
       <button class="overflow-hidden rounded-xl cursor-pointer">
         <img
@@ -22,13 +19,13 @@
       </button>
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
-          <ui-heading [heading]="HeadingType.H4" [showBorder]="false">
-            <span class="text-primary-500">
+          <ui-heading [heading]="HeadingType.H3" [showBorder]="false">
+            <span class="text-primary">
               SVGL - A beautiful library with SVG logos</span
             ></ui-heading
           >
           <div class="techs"></div>
-          <p class="text-xs md:text-sm">
+          <p class="text-sm md:text-base">
             Biblioteca de logos SVG de las marcas más populares. +10k visitas al
             mes. +2K svgs descargados. Creado desde cero con Next.js, React y
             Tailwind CSS.
@@ -46,4 +43,40 @@
     </div>
   </p-card>
   <ui-separator></ui-separator>
+  <p-card [style]="{ background: 'transparent', boxShadow: 'none' }">
+    <div
+      class="grid grid-cols-1 md:grid-cols-[0.7fr_1fr] flex-col md:flex-row gap-4"
+    >
+      <button class="overflow-hidden rounded-xl cursor-pointer">
+        <img
+          alt="Card"
+          src="https://porfolio.dev/projects/svgl.webp"
+          class="h-full object-cover hover:scale-110 transition-transform duration-300"
+        />
+      </button>
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+          <ui-heading [heading]="HeadingType.H3" [showBorder]="false">
+            <span class="text-primary">
+              SVGL - A beautiful library with SVG logos</span
+            ></ui-heading
+          >
+          <div class="techs"></div>
+          <p class="text-sm md:text-base">
+            Biblioteca de logos SVG de las marcas más populares. +10k visitas al
+            mes. +2K svgs descargados. Creado desde cero con Next.js, React y
+            Tailwind CSS.
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <p-button size="small">
+            <span class="pi pi-github"></span> Code
+          </p-button>
+          <p-button size="small" [outlined]="true" severity="contrast"
+            ><span class="pi pi-external-link"></span> Preview</p-button
+          >
+        </div>
+      </div>
+    </div>
+  </p-card>
 </section>

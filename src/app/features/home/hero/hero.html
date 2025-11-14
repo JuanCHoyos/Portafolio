@@ -1,27 +1,36 @@
-<section class="min-h-svh grid grid-cols-1 justify-center grid-rows-[1fr_auto] px-4">
+<section
+  class="min-h-svh grid grid-cols-1 justify-center grid-rows-[1fr_auto] px-4"
+>
   <article class="flex flex-col items-center justify-center gap-8">
     <ui-heading
       [heading]="HeadingType.H1"
       [showBorder]="false"
       class="text-center"
     >
-      Hola, soy <span class="text-primary-500">Juan</span>, desarrollador
+      Hola, soy <span class="text-primary">Juan Carlos</span>, desarrollador
       full-stack
     </ui-heading>
 
     <p class="text-sm md:text-base text-center max-w-xl">
       +5 años de experiencia en desarrollo web.
-      <strong class="text-primary-500">Ingeniero de Software</strong>
-      especializado en construir aplicaciones modernas con Angular, Node.js y
-      TypeScript, enfocado en crear experiencias frontend de alta calidad y
-      desarrollar soluciones backend eficientes y confiables.
+      <strong class="text-primary">Ingeniero de Software</strong>
+      especializado en construir aplicaciones modernas con
+      <strong class="text-primary">Angular, Node.js y TypeScript,</strong>
+      enfocado en crear experiencias frontend de alta calidad y desarrollar
+      soluciones backend eficientes y confiables.
     </p>
 
     <div class="flex flex-col md:flex-row items-center gap-4">
-      <p-button class="min-w-64">
-        <span class="pi pi-envelope"></span>
-        <span class="text-sm md:text-base font-medium">Contáctame</span>
-      </p-button>
+      <a
+        href="#contact"
+        pButton
+        icon="pi pi-envelope"
+        severity="primary"
+        rel="noopener noreferrer"
+        class="min-w-64"
+      >
+        <span pButtonLabel class="text-sm md:text-base">Contáctame</span>
+      </a>
 
       <a
         href="https://drive.google.com/uc?export=download&id=1BYCFJx4KAfL3alhSsyTDMv7w7tEanfaX"
@@ -39,14 +48,7 @@
     </div>
   </article>
 
-  <div class="flex flex-col items-center gap-8">
+  <div class="flex flex-col items-center gap-8 pb-8">
     <social-networks></social-networks>
-    <div class="flex flex-col items-center gap-2 text-sm md:text-lg">
-      Conoce mi experiencia
-      <ui-icon
-        name="lucideChevronDown"
-        class="text-lg md:text-2xl animate-bounce"
-      ></ui-icon>
-    </div>
   </div>
 </section>

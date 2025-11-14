@@ -9,7 +9,7 @@ import { HeadingType } from '../../../shared/components/ui-heading/ui-heading';
   templateUrl: './about.html',
   styles: `
   strong {
-    color: var(--p-primary-500);
+    color: var(--p-primary-color);
   }`,
 })
 export class About {

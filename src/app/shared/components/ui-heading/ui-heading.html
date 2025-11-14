@@ -24,7 +24,11 @@
     [ngClass]="{'flex items-center gap-2': iconContent(), 'pb-4': showBorder()}"
   >
     @if(iconContent()) {
-    <ng-container [ngTemplateOutlet]="iconTemplate()"></ng-container>
+    <div
+      class="p-2 flex items-center bg-linear-to-br from-primary-500/10 to-primary-500/30 rounded-lg border border-primary-500/30"
+    >
+      <ng-container [ngTemplateOutlet]="iconTemplate()"></ng-container>
+    </div>
     }
     <ng-content />
   </div>

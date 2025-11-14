@@ -1,36 +1,25 @@
 <section class="flex flex-col gap-8" id="tech">
   <ui-heading [heading]="HeadingType.H2">
     <ng-template #icon>
-      <ui-icon
-        name="simpleAngular"
-        class="text-2xl md:text-3xl text-[#bd23f2]"
-      ></ui-icon>
+      <ui-icon name="simpleAngular" class="text-[#bd23f2]"></ui-icon>
     </ng-template>
     Tecnologías
   </ui-heading>
 
   <div class="grid grid-cols-1 gap-4 md:gap-8">
-    @for(stack of techStacks(); track stack.label) {
-    <div class="flex flex-col gap-4">
-      <ui-heading [heading]="HeadingType.H3"> {{ stack.label }} </ui-heading>
-
-      <div class="flex flex-wrap gap-4">
-        @for(tech of stack.items; track tech.label) {
-        <div
-          class="min-w-18 min-h-18 md:min-w-20 md:min-h-20 flex-1 flex flex-col items-center justify-center gap-2 border border-primary-500/50 p-2 rounded-xl hover:bg-primary-500/5 group fade-up-right"
-        >
-          <ui-icon
-            [name]="tech.icon"
-            class="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300"
-            [class]="tech.color"
-          ></ui-icon>
-          <span class="text-xs font-semibold" [class]="tech.color"
-            >{{ tech.label }}</span
-          >
-        </div>
-        }
+    <div class="flex flex-wrap gap-4">
+      @for(tech of techStacks(); track tech.label) {
+      <div
+        class="min-w-18 min-h-18 md:min-w-20 md:min-h-20 flex-1 flex flex-col items-center justify-center gap-2 border border-primary-500/50 p-2 rounded-xl hover:bg-primary-500/5 group fade-up-right"
+      >
+        <ui-icon
+          [name]="tech.icon"
+          class="text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300"
+          [class]="tech.color"
+        ></ui-icon>
+        <span class="text-sm">{{ tech.label }}</span>
       </div>
+      }
     </div>
-    }
   </div>
 </section>
