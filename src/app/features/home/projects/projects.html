@@ -6,77 +6,64 @@
     Proyectos</ui-heading
   >
 
+  @for(project of projects(); track project.url) {
   <p-card [style]="{ background: 'transparent', boxShadow: 'none' }">
     <div
-      class="grid grid-cols-1 md:grid-cols-[0.7fr_1fr] flex-col md:flex-row gap-4"
+      class="grid grid-cols-1 md:grid-cols-[0.9fr_1fr] flex-col md:flex-row gap-4"
     >
-      <button class="overflow-hidden rounded-xl cursor-pointer">
+      <a
+        [href]="project.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg overflow-hidden"
+      >
         <img
-          alt="Card"
-          src="https://porfolio.dev/projects/svgl.webp"
+          [alt]="project.title"
+          [src]="project.image"
           class="h-full object-cover hover:scale-110 transition-transform duration-300"
         />
-      </button>
+      </a>
+
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
           <ui-heading [heading]="HeadingType.H3" [showBorder]="false">
-            <span class="text-primary">
-              SVGL - A beautiful library with SVG logos</span
-            ></ui-heading
+            <span class="text-primary"> {{ project.title }}</span></ui-heading
           >
-          <div class="techs"></div>
-          <p class="text-sm md:text-base">
-            Biblioteca de logos SVG de las marcas más populares. +10k visitas al
-            mes. +2K svgs descargados. Creado desde cero con Next.js, React y
-            Tailwind CSS.
-          </p>
+          <p class="text-sm md:text-base mb-2">{{ project.description }}</p>
+          <div class="flex items-center flex-wrap gap-2">
+            @for(tech of project.stack; track tech) {
+            <span class="block p-1 px-2 border rounded-lg text-xs"
+              >{{ tech }}</span
+            >
+            }
+          </div>
         </div>
         <div class="flex gap-2">
-          <p-button size="small">
-            <span class="pi pi-github"></span> Code
-          </p-button>
-          <p-button size="small" [outlined]="true" severity="contrast"
-            ><span class="pi pi-external-link"></span> Preview</p-button
+          <a
+            [href]="project.github"
+            pButton
+            icon="pi pi-github"
+            target="_blank"
+            rel="noopener noreferrer"
           >
+            <span pButtonLabel class="text-sm md:text-base">Código fuente</span>
+          </a>
+
+          <a
+            [href]="project.url"
+            pButton
+            icon="pi pi-external-link"
+            [outlined]="true"
+            severity="contrast"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span pButtonLabel class="text-sm md:text-base">Vista previa</span>
+          </a>
         </div>
       </div>
     </div>
   </p-card>
-  <ui-separator></ui-separator>
-  <p-card [style]="{ background: 'transparent', boxShadow: 'none' }">
-    <div
-      class="grid grid-cols-1 md:grid-cols-[0.7fr_1fr] flex-col md:flex-row gap-4"
-    >
-      <button class="overflow-hidden rounded-xl cursor-pointer">
-        <img
-          alt="Card"
-          src="https://porfolio.dev/projects/svgl.webp"
-          class="h-full object-cover hover:scale-110 transition-transform duration-300"
-        />
-      </button>
-      <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-          <ui-heading [heading]="HeadingType.H3" [showBorder]="false">
-            <span class="text-primary">
-              SVGL - A beautiful library with SVG logos</span
-            ></ui-heading
-          >
-          <div class="techs"></div>
-          <p class="text-sm md:text-base">
-            Biblioteca de logos SVG de las marcas más populares. +10k visitas al
-            mes. +2K svgs descargados. Creado desde cero con Next.js, React y
-            Tailwind CSS.
-          </p>
-        </div>
-        <div class="flex gap-2">
-          <p-button size="small">
-            <span class="pi pi-github"></span> Code
-          </p-button>
-          <p-button size="small" [outlined]="true" severity="contrast"
-            ><span class="pi pi-external-link"></span> Preview</p-button
-          >
-        </div>
-      </div>
-    </div>
-  </p-card>
+  <ui-separator class="last:hidden"></ui-separator>
+  }
 </section>
